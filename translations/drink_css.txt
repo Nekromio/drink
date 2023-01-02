@@ -1,0 +1,77 @@
+"Phrases"
+{
+	"Tag"
+	{
+		"#format"	"{1:t}"
+		"en"		"{green}[{team}Drink{green}] {1}"
+		"ru"		"{green}[{team}Выпить{green}] {1}"
+	}
+	
+	"Annonce"
+	{
+		"en"		"{#cc0066}Roll: {#ff0000}to chat {#ff6600}выпить {#0066ff}or {#ff6600}drink"
+		"ru"		"{#cc0066}Накатить: {#ff0000}в чат {#ff6600}выпить {#0066ff}или {#ff6600}drink"
+	}
+	
+	"Annonce two"
+	{
+		"en"		"{#009933}Sober up: {#0099ff}зукусить {#ff6600} or {#0099ff}eat"
+		"ru"		"{#009933}Протрезветь: {#0099ff}зукусить {#ff6600}или {#0099ff}eat"
+	}
+	
+	"Drink first"
+	{
+		"#format"	"{1:N}"
+		"en"		"{#cc0066}Player {#ff6600}[{#ff0000}{1}{#ff6600}] {#ff6600}drank a shot glass!"
+		"ru"		"{#cc0066}Игрок {#ff6600}[{#ff0000}{1}{#ff6600}] {#ff6600}выпил рюмашку !"
+	}
+	
+	"Drink #1"
+	{
+		"#format"	"{1:N}"
+		"en"		"{#cc0066}Player {#ff6600}[{#ff0000}{1}{#ff6600}] {#ff6600} rolled more !"
+		"ru"		"{#cc0066}Игрок {#ff6600}[{#ff0000}{1}{#ff6600}] {#ff6600}накатил ещё !"
+	}
+	
+	"Drink #2"
+	{
+		"#format"	"{1:N}"
+		"en"		"{#cc0066}Player {#ff6600}[{#ff0000}{1}{#ff6600}] {#ff6600}drank a beer !"
+		"ru"		"{#cc0066}Игрок {#ff6600}[{#ff0000}{1}{#ff6600}] {#ff6600}отпил пивка !"
+	}
+	
+	"Drink #3"
+	{
+		"#format"	"{1:N}"
+		"en"		"{#cc0066}Player {#ff6600}[{#ff0000}{1}{#ff6600}] {#ff6600}polished the wine !"
+		"ru"		"{#cc0066}Игрок {#ff6600}[{#ff0000}{1}{#ff6600}] {#ff6600}шлифанул винца !"
+	}
+	
+	"Drink #4"
+	{
+		"#format"	"{1:N}"
+		"en"		"{#cc0066}Player {#ff6600}[{#ff0000}{1}{#ff6600}] {#ff6600}knocked back another shot glass!"
+		"ru"		"{#cc0066}Игрок {#ff6600}[{#ff0000}{1}{#ff6600}] {#ff6600}опрокинул ещё рюмашку !"
+	}
+	
+	"Drink #5"
+	{
+		"#format"	"{1:N}"
+		"en"		"{#cc0066}Player {#ff6600}[{#ff0000}{1}{#ff6600}] {#ff6600} more.. a glass.. !"
+		"ru"		"{#cc0066}Игрок {#ff6600}[{#ff0000}{1}{#ff6600}] {#ff6600} ещё.. стакашик.. !"
+	}
+	
+	"Food"
+	{
+		"#format"	"{1:N}"
+		"en"		"{#cc0066}Player {#ff6600}[{#ff0000}{1}{#ff6600}] {#ff6600}had a snack and sobered up!"
+		"ru"		"{#cc0066}Игрок {#ff6600}[{#ff0000}{1}{#ff6600}] {#ff6600}закусил и протрезвел !"
+	}
+	
+	"Eats a snack"
+	{
+		"#format"	"{1:N}"
+		"en"		"{#cc0066}Player {#ff6600}[{#ff0000}{1}{#ff6600}] {#ff6600} is already sober, but I'm eating a snack!"
+		"ru"		"{#cc0066}Игрок {#ff6600}[{#ff0000}{1}{#ff6600}] {#ff6600} уже трезв, но жрёт закусь !"
+	}
+}
