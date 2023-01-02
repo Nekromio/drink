@@ -6,19 +6,18 @@ bool
 float
 	fLastUsed[MAXPLAYERS+1];
 
-public Plugin myinfo =
+Plugin myinfo =
 {
 	name = "Drink/Выпить",
 	author = "Nek.'a 2x2 | ggwp.site ",
 	description = "Позволяет выпивать на сервере !",
-	version = "1.0.1",
+	version = "1.0.2",
 	url = "https://ggwp.site/"
 };
 
 public void OnPluginStart()
 {
 	HookEvent("player_spawn", Event_PlayerSpawn);
-	//HookUserMessage(GetUserMessageId("SayText2"), SayText2, true);
 	HookUserMessage(GetUserMessageId("TextMsg"), UserMessageHook, true); 
 	
 	RegConsoleCmd("say", CheckText);
@@ -32,7 +31,7 @@ public void OnClientDisconnect(int client)
 	bDrink[client] = false;
 }
 
-public void Event_PlayerSpawn(Handle event, const char[] name, bool dontBroadcast)
+void Event_PlayerSpawn(Handle event, const char[] name, bool dontBroadcast)
 {
 	int client = GetClientOfUserId(GetEventInt(event, "userid"));
 	fLastUsed[client] = 0.0;
@@ -90,7 +89,7 @@ Action CheckText(int client, any args)
 		if(!bDrink[client])
 		{
 			bDrink[client] = true;
-			for(int i = 1; i <= MaxClients; i++) if(IsClientInGame(i) && !IsFakeClient(i)) CPrint(i, _, "{#cc0066}Игрок {#ff6600}[{#ff0000}%N{#ff6600}] {#ff6600}выпил рюмашку !", client);
+			SayTesxt(client, "{#cc0066}Игрок {#ff6600}[{#ff0000}%N{#ff6600}] {#ff6600}выпил рюмашку !");
 			
 			ServerCommand("sm_drug #%d", GetClientUserId(client));
 			return Plugin_Continue;
@@ -101,11 +100,11 @@ Action CheckText(int client, any args)
 			
 			switch(rnd)
 			{
-				case 0: for(int i = 1; i <= MaxClients; i++) if(IsClientInGame(i) && !IsFakeClient(i)) CPrint(i, _, "{#cc0066}Игрок {#ff6600}[{#ff0000}%N{#ff6600}] {#ff6600}накатил ещё !", client);
-				case 1: for(int i = 1; i <= MaxClients; i++) if(IsClientInGame(i) && !IsFakeClient(i)) CPrint(i, _, "{#cc0066}Игрок {#ff6600}[{#ff0000}%N{#ff6600}] {#ff6600}отпил пивка !", client);
-				case 2: for(int i = 1; i <= MaxClients; i++) if(IsClientInGame(i) && !IsFakeClient(i)) CPrint(i, _, "{#cc0066}Игрок {#ff6600}[{#ff0000}%N{#ff6600}] {#ff6600}шлифанул винца !", client);
-				case 3: for(int i = 1; i <= MaxClients; i++) if(IsClientInGame(i) && !IsFakeClient(i)) CPrint(i, _, "{#cc0066}Игрок {#ff6600}[{#ff0000}%N{#ff6600}] {#ff6600}опрокинул ещё рюмашку !", client);
-				case 4: for(int i = 1; i <= MaxClients; i++) if(IsClientInGame(i) && !IsFakeClient(i)) CPrint(i, _, "{#cc0066}Игрок {#ff6600}[{#ff0000}%N{#ff6600}] {#ff6600} ещё.. стакашик.. !", client);
+				case 0: SayTesxt(client, "{#cc0066}Игрок {#ff6600}[{#ff0000}%N{#ff6600}] {#ff6600}накатил ещё !");
+				case 1: SayTesxt(client, "{#cc0066}Игрок {#ff6600}[{#ff0000}%N{#ff6600}] {#ff6600}отпил пивка !");
+				case 2: SayTesxt(client, "{#cc0066}Игрок {#ff6600}[{#ff0000}%N{#ff6600}] {#ff6600}шлифанул винца !");
+				case 3: SayTesxt(client, "{#cc0066}Игрок {#ff6600}[{#ff0000}%N{#ff6600}] {#ff6600}опрокинул ещё рюмашку !");
+				case 4: SayTesxt(client, "{#cc0066}Игрок {#ff6600}[{#ff0000}%N{#ff6600}] {#ff6600} ещё.. стакашик.. !");
 			}
 		}
 	}
@@ -114,19 +113,19 @@ Action CheckText(int client, any args)
 		if(bDrink[client])
 		{
 			bDrink[client] = false;
-			for(int i = 1; i <= MaxClients; i++) if(IsClientInGame(i) && !IsFakeClient(i)) CPrint(i, _, "{#cc0066}Игрок {#ff6600}[{#ff0000}%N{#ff6600}] {#ff6600}закусил и протрезвел !", client);
+			SayTesxt(client, "{#cc0066}Игрок {#ff6600}[{#ff0000}%N{#ff6600}] {#ff6600}закусил и протрезвел !");
 			ServerCommand("sm_drug #%d", GetClientUserId(client));
 			return Plugin_Continue;
 		}
 		else
 		{
-			for(int i = 1; i <= MaxClients; i++) if(IsClientInGame(i) && !IsFakeClient(i)) CPrint(i, _, "{#cc0066}Игрок {#ff6600}[{#ff0000}%N{#ff6600}] {#ff6600} уже трезв, но жрёт закусь !", client);
+			SayTesxt(client, "{#cc0066}Игрок {#ff6600}[{#ff0000}%N{#ff6600}] {#ff6600} уже трезв, но жрёт закусь !");
 		}
 	}
 	return Plugin_Continue;
 }
 
-public Action UserMessageHook(UserMsg MsgId, Handle hBitBuffer, const char[] iPlayers, int iNumPlayers, bool bReliable, bool bInit)
+Action UserMessageHook(UserMsg MsgId, Handle hBitBuffer, const char[] iPlayers, int iNumPlayers, bool bReliable, bool bInit)
 {
 	
 	BfReadByte(hBitBuffer); 
@@ -139,4 +138,10 @@ public Action UserMessageHook(UserMsg MsgId, Handle hBitBuffer, const char[] iPl
 		return Plugin_Handled;
 	}
 	return Plugin_Continue;
+}
+
+void SayTesxt(int client, char[] text)
+{
+	for(int i = 1; i <= MaxClients; i++) if(IsClientInGame(i) && !IsFakeClient(i))
+		CPrint(i, _, text, client);
 }
