@@ -125,7 +125,7 @@ Action CheckText(int client, any args)
 	return Plugin_Continue;
 }
 
-Action UserMessageHook(UserMsg MsgId, Handle hBitBuffer, const char[] iPlayers, int iNumPlayers, bool bReliable, bool bInit)
+Action UserMessageHook(UserMsg MsgId, Handle hBitBuffer, const int[] iPlayers, int iNumPlayers, bool bReliable, bool bInit)
 {
 	
 	BfReadByte(hBitBuffer); 
