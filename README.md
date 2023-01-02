@@ -1,4 +1,12 @@
 # drink
+# Зависимости/Dependencies
+https://hlmod.ru/resources/colors-inc-cveta-csgo-css-css-v34.2358/
+
+ВАЖНО!
+Для удобства файл был переименован из colors.inc в colors_ws.inc
+Important!
+For convenience, the file was renamed from colors.inc to colors_ws.inc
+
 # ru
 игрок может пить на сервере
 
