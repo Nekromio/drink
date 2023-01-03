@@ -3,75 +3,75 @@
 	"Tag"
 	{
 		"#format"	"{1:t}"
-		"en"		"{green}[{default}Drink{green}] {1}"
-		"ru"		"{green}[{default}Выпить{green}] {1}"
+		"en"		" {green}[{default}Drink{green}] {1}"
+		"ru"		" {green}[{default}Выпить{green}] {1}"
 	}
 	
 	"Annonce"
 	{
-		"en"		"{green}Roll: {default}to chat {green}выпить {default}or {green}drink"
-		"ru"		"{green}Накатить: {default}в чат {green}выпить {default}или {green}drink"
+		"en"		" {green}Roll: {default}to chat {green}выпить {default}or {green}drink"
+		"ru"		" {green}Накатить: {default}в чат {green}выпить {default}или {green}drink"
 	}
 	
 	"Annonce two"
 	{
-		"en"		"{default}Sober up: {green}зукусить {green} or {green}eat"
-		"ru"		"{default}Протрезветь: {green}зукусить {green}или {green}eat"
+		"en"		" {default}Sober up: {green}зукусить {green} or {green}eat"
+		"ru"		" {default}Протрезветь: {green}зукусить {green}или {green}eat"
 	}
 	
 	"Drink first"
 	{
 		"#format"	"{1:N}"
-		"en"		"{green}Player {green}[{default}{1}{green}] {green}drank a shot glass!"
-		"ru"		"{green}Игрок {green}[{default}{1}{green}] {green}выпил рюмашку !"
+		"en"		" {green}Player {green}[{default}{1}{green}] {green}drank a shot glass!"
+		"ru"		" {green}Игрок {green}[{default}{1}{green}] {green}выпил рюмашку !"
 	}
 	
 	"Drink #1"
 	{
 		"#format"	"{1:N}"
-		"en"		"{green}Player {green}[{default}{1}{green}] {green} rolled more !"
-		"ru"		"{green}Игрок {green}[{default}{1}{green}] {green}накатил ещё !"
+		"en"		" {green}Player {green}[{default}{1}{green}] {green} rolled more !"
+		"ru"		" {green}Игрок {green}[{default}{1}{green}] {green}накатил ещё !"
 	}
 	
 	"Drink #2"
 	{
 		"#format"	"{1:N}"
-		"en"		"{green}Player {green}[{default}{1}{green}] {green}drank a beer !"
-		"ru"		"{green}Игрок {green}[{default}{1}{green}] {green}отпил пивка !"
+		"en"		" {green}Player {green}[{default}{1}{green}] {green}drank a beer !"
+		"ru"		" {green}Игрок {green}[{default}{1}{green}] {green}отпил пивка !"
 	}
 	
 	"Drink #3"
 	{
 		"#format"	"{1:N}"
-		"en"		"{green}Player {green}[{default}{1}{green}] {green}polished the wine !"
-		"ru"		"{green}Игрок {green}[{default}{1}{green}] {green}шлифанул винца !"
+		"en"		" {green}Player {green}[{default}{1}{green}] {green}polished the wine !"
+		"ru"		" {green}Игрок {green}[{default}{1}{green}] {green}шлифанул винца !"
 	}
 	
 	"Drink #4"
 	{
 		"#format"	"{1:N}"
-		"en"		"{green}Player {green}[{default}{1}{green}] {green}knocked back another shot glass!"
-		"ru"		"{green}Игрок {green}[{default}{1}{green}] {green}опрокинул ещё рюмашку !"
+		"en"		" {green}Player {green}[{default}{1}{green}] {green}knocked back another shot glass!"
+		"ru"		" {green}Игрок {green}[{default}{1}{green}] {green}опрокинул ещё рюмашку !"
 	}
 	
 	"Drink #5"
 	{
 		"#format"	"{1:N}"
-		"en"		"{green}Player {green}[{default}{1}{green}] {green} more.. a glass.. !"
-		"ru"		"{green}Игрок {green}[{default}{1}{green}] {green} ещё.. стакашик.. !"
+		"en"		" {green}Player {green}[{default}{1}{green}] {green} more.. a glass.. !"
+		"ru"		" {green}Игрок {green}[{default}{1}{green}] {green} ещё.. стакашик.. !"
 	}
 	
 	"Food"
 	{
 		"#format"	"{1:N}"
-		"en"		"{green}Player {green}[{default}{1}{green}] {green}had a snack and sobered up!"
-		"ru"		"{green}Игрок {green}[{default}{1}{green}] {green}закусил и протрезвел !"
+		"en"		" {green}Player {green}[{default}{1}{green}] {green}had a snack and sobered up!"
+		"ru"		" {green}Игрок {green}[{default}{1}{green}] {green}закусил и протрезвел !"
 	}
 	
 	"Eats a snack"
 	{
 		"#format"	"{1:N}"
-		"en"		"{green}Player {green}[{default}{1}{green}] {green} is already sober, but I'm eating a snack!"
-		"ru"		"{green}Игрок {green}[{default}{1}{green}] {green} уже трезв, но жрёт закусь !"
+		"en"		" {green}Player {green}[{default}{1}{green}] {green} is already sober, but I'm eating a snack!"
+		"ru"		" {green}Игрок {green}[{default}{1}{green}] {green} уже трезв, но жрёт закусь !"
 	}
 }
