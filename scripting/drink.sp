@@ -53,10 +53,6 @@ public void OnPluginStart()
 	
 	HookEvent("player_spawn", Event_PlayerSpawn);
 	HookUserMessage(GetUserMessageId("TextMsg"), UserMessageHook, true); 
-	
-	RegConsoleCmd("say", CheckText);
-	RegConsoleCmd("say2", CheckText);
-	RegConsoleCmd("say_team", CheckText);
 }
 
 public void OnClientDisconnect(int client)
@@ -89,73 +85,43 @@ Action TimerAnnounce(Handle timer, any userid)
 	return Plugin_Stop; 
 }
 
-Action CheckText(int client, any args)
+public void OnClientSayCommand_Post(client, const String:command[], const String: sArgs[])
 {
-	char sBuffer[256], sCmd[256];
-	int iStartidx;
-	
-	if(!client)
-		return Plugin_Continue;
-	
-	if(fLastUsed[client] > GetGameTime() - 1.3)
-		return Plugin_Continue;
-		
-	if(GetCmdArgString(sBuffer, sizeof(sBuffer)) < 1)
-		return Plugin_Continue;
-		
-	if(!IsPlayerAlive(client))
-		return Plugin_Continue;
-	
-	if(sBuffer[strlen(sBuffer)-1] == '"')
+	if(client != 0 && !IsFakeClient(client) && IsClientInGame(client) && !(fLastUsed[client] > GetGameTime() - 1.3) && IsPlayerAlive(client))
 	{
-		sBuffer[strlen(sBuffer)-1] = '\0';
-		iStartidx = 1;
-	}
-	
-	GetCmdArg(0, sCmd, sizeof(sCmd));
-	if (strcmp(sCmd, "say2", false) == 0)
-		iStartidx += 4;
-	
-	fLastUsed[client] = GetGameTime();
-	
-	if(strcmp(sBuffer[iStartidx], "выпить", false) == 0 || strcmp(sBuffer[iStartidx], "drink", false) == 0)
-	{
-		if(!bDrink[client])
+		fLastUsed[client] = GetGameTime();
+		char sText[254];
+		strcopy(sText, sizeof(sText), sArgs);
+		TrimString(sText);
+		StripQuotes(sText);
+
+		if(strcmp(sText, "выпить", false) == 0 || strcmp(sText, "drink", false) == 0)
 		{
-			bDrink[client] = true;
-			SayTesxt(client, "Drink first");
-			ServerCommand("sm_drug #%d", GetClientUserId(client));
-			return Plugin_Continue;
-		}
-		else
-		{
-			int rnd = GetRandomInt(0, 4);
-			
-			switch(rnd)
+			if(!bDrink[client])
 			{
-				case 0: SayTesxt(client, "Drink #1");
-				case 1: SayTesxt(client, "Drink #2");
-				case 2: SayTesxt(client, "Drink #3");
-				case 3: SayTesxt(client, "Drink #4");
-				case 4: SayTesxt(client, "Drink #5");
+				bDrink[client] = true;
+				SayTesxt(client, "Drink first");
+				ServerCommand("sm_drug #%d", GetClientUserId(client));
+			}
+			else
+			{
+				FormatEx(sText, sizeof(sText), "Drink #%i", GetRandomInt(0, 4));
+				SayTesxt(client, sText);
 			}
 		}
-	}
-	else if(strcmp(sBuffer[iStartidx], "закусить", false) == 0 || strcmp(sBuffer[iStartidx], "eat", false) == 0)
-	{
-		if(bDrink[client])
+		else if(strcmp(sText, "закусить", false) == 0 || strcmp(sText, "eat", false) == 0)
 		{
-			bDrink[client] = false;
-			SayTesxt(client, "Food");
-			ServerCommand("sm_drug #%d", GetClientUserId(client));
-			return Plugin_Continue;
+			if(bDrink[client])
+			{
+				bDrink[client] = false;
+				SayTesxt(client, "Food");
+				ServerCommand("sm_drug #%d", GetClientUserId(client));
+			}
+			else
+			{
+				SayTesxt(client, "Eats a snack");
+			}
 		}
-		else
-		{
-			SayTesxt(client, "Eats a snack");
-		}
-	}
-	return Plugin_Continue;
 }
 
 Action UserMessageHook(UserMsg MsgId, Handle hBitBuffer, const int[] iPlayers, int iNumPlayers, bool bReliable, bool bInit)
